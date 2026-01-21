@@ -2,10 +2,13 @@ public class Task {
 
     private String name;
     private String done;
+    private String type;
 
-    public Task(String name, String done) {
+
+    public Task(String type, String name) {
         this.name = name;
-        this.done = done;
+        this.done = "";
+        this.type = type;
     }
 
     public void setDone(String done) {
@@ -18,5 +21,10 @@ public class Task {
 
     public String getDone() {
         return this.done;
+    }
+
+    @Override
+    public String toString() {
+        return "[" + this.type + "][" + this.done + "] " + this.name;
     }
 }

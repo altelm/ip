@@ -6,30 +6,39 @@ public class Esm {
         Scanner scanner = new Scanner(System.in);
         ArrayList<Task> list= new ArrayList<>();
         System.out.println("Hello! I'm Esm\nWhat can I do for you?\n");
-        String temp = scanner.nextLine();
-        String[] in = temp.split("\\s+");
-        while(!in[0].equalsIgnoreCase("bye")) {
+        String in = scanner.next();
+        //String[] in = temp.split("\\s+");
+        while(!in.equalsIgnoreCase("bye")) {
 
-            if(in[0].contains("mark")) {
-                int num  = Integer.parseInt(in[1]);
-                if( in[0].equalsIgnoreCase("mark")) {
+            if(in.contains("mark")) {
+                int num  = scanner.nextInt();
+                if( in.equalsIgnoreCase("mark")) {
                     list.get(num - 1).setDone("X");
-                    System.out.println("I've marked this task as done:)\n["+list.get(num-1).getDone()+"] "+list.get(num-1).getName());
+                    System.out.println("I've marked this task as done:)\n"+list.get(num-1));
                 } else {
                     list.get(num-1).setDone("");
-                    System.out.println("I've marked this task as not done:(:)\n["+list.get(num-1).getDone()+"] "+list.get(num-1).getName());
+                    System.out.println("I've marked this task as not done:(:)\n" + list.get(num-1));
                 }
-            } else if(in[0].equalsIgnoreCase("list")) {
+            } else if(in.equalsIgnoreCase("list")) {
                 for(int i = 1; i <= list.size(); i++) {
-                    System.out.println( i + ".[" + list.get(i-1).getDone() + "] " + list.get(i-1).getName());
+                    System.out.println( i + ". " + list.get(i-1));
                 }
             } else {
-                list.add(new Task(temp, ""));
-                System.out.println("added: "+ temp);
+                String name = scanner.nextLine();
+                Task temptask = null;
+                if(in.equals("todo")) {
+                    temptask= new ToDo(name);
+                } else if (in.equals("deadline")) {
+                    temptask = new Deadline(name.split("/"));
+                } else if (in.equals("event")) {
+                    temptask = new Event(name.split("/"));
+                }
+                list.add(temptask);
+                System.out.println("Task added.\n" + temptask + "\nNow there are " + list.size() + " task(s) in list");
             }
 
-            temp = scanner.nextLine().trim();
-            in = temp.split("\\s+");
+
+            in = scanner.next();
         }
         System.out.println("Bye. Hope to see you again\n");
 
