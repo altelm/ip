@@ -30,4 +30,6 @@ Lo, I have set this task down as finished:)
 [T][X]  join sports club
 It is undone, and so marked in thy ledger:(
 [E][]  project meeting (from: Aug 6th 2pm  to: 4pm)
+Words are required, lest thy task vanish into nothingness.
+I confess myself ignorant of thy intent
 Fare thee well
