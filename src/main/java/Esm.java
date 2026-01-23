@@ -5,7 +5,7 @@ public class Esm {
 
         Scanner scanner = new Scanner(System.in);
         ArrayList<Task> list= new ArrayList<>();
-        System.out.println("Hello! I'm Esm\nWhat can I do for you?\n");
+        System.out.println("Greetings I am thy humble Esm\nSpeak and I shall head the!\n");
         String in = scanner.next();
         //String[] in = temp.split("\\s+");
         while(!in.equalsIgnoreCase("bye")) {
@@ -14,10 +14,10 @@ public class Esm {
                 int num  = scanner.nextInt();
                 if( in.equalsIgnoreCase("mark")) {
                     list.get(num - 1).setDone("X");
-                    System.out.println("I've marked this task as done:)\n"+list.get(num-1));
+                    System.out.println("Lo, I have set this task down as finished:)\n"+list.get(num-1));
                 } else {
                     list.get(num-1).setDone("");
-                    System.out.println("I've marked this task as not done:(:)\n" + list.get(num-1));
+                    System.out.println("It is undone, and so marked in thy ledger:(\n" + list.get(num-1));
                 }
             } else if(in.equalsIgnoreCase("list")) {
                 for(int i = 1; i <= list.size(); i++) {
@@ -34,13 +34,13 @@ public class Esm {
                     temptask = new Event(name.split("/"));
                 }
                 list.add(temptask);
-                System.out.println("Task added.\n" + temptask + "\nNow there are " + list.size() + " task(s) in list");
+                System.out.println("Aye tis done.\n" + temptask + "\nThy ledger now holdeth " + list.size() + " task(s)");
             }
 
 
             in = scanner.next();
         }
-        System.out.println("Bye. Hope to see you again\n");
+        System.out.println("Fare thee well\n");
 
     }
 }

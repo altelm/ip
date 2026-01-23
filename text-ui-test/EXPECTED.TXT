@@ -1,7 +1,33 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
+Greetings I am thy humble Esm
+Speak and I shall head the!
 
+Aye tis done.
+[T][]  read book
+Thy ledger now holdeth 1 task(s)
+Aye tis done.
+[D][]  return book (by: June 6th)
+Thy ledger now holdeth 2 task(s)
+Aye tis done.
+[E][]  project meeting (from: Aug 6th 2pm  to: 4pm)
+Thy ledger now holdeth 3 task(s)
+Aye tis done.
+[T][]  join sports club
+Thy ledger now holdeth 4 task(s)
+Aye tis done.
+[T][]  borrow book
+Thy ledger now holdeth 5 task(s)
+Aye tis done.
+[D][]  return book(by: Sunday)
+Thy ledger now holdeth 6 task(s)
+Aye tis done.
+[E][]  project meeting (from: Mon 2pm  to:  4pm)
+Thy ledger now holdeth 7 task(s)
+Lo, I have set this task down as finished:)
+[T][X]  read book
+Lo, I have set this task down as finished:)
+[E][X]  project meeting (from: Aug 6th 2pm  to: 4pm)
+Lo, I have set this task down as finished:)
+[T][X]  join sports club
+It is undone, and so marked in thy ledger:(
+[E][]  project meeting (from: Aug 6th 2pm  to: 4pm)
+Fare thee well
