@@ -23,6 +23,10 @@ public class Esm {
                     for(int i = 1; i <= list.size(); i++) {
                         System.out.println( i + ". " + list.get(i-1));
                     }
+                } else if(in.contains("delete")) {
+                    int num  = scanner.nextInt();
+                    Task temptask = list.remove(num-1);
+                    System.out.println("Thy request is heeded—the task is expunged.\n" + temptask + "\nThy ledger now holdeth " + list.size() + " task(s)");
                 } else {
                     String name = scanner.nextLine();
                     Task temptask = null;
