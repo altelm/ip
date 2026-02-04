@@ -1,14 +1,20 @@
-import java.util.*;
-import java.io.*;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 public class Esm {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
+        Path path = Paths.get("data", "esm.txt");
+        Storage storage = new Storage(path);
         Scanner scanner = new Scanner(System.in);
-        ArrayList<Task> list= new ArrayList<>();
+        ArrayList<Task> list = storage.load();
+
         System.out.println("Greetings I am thy humble Esm\nSpeak and I shall head the!\n");
         String in = scanner.next();
 
-        while(!in.equalsIgnoreCase("bye")) {
+        while(!in.contains("bye")) {
 
                 if(in.contains("mark")) {
                     int num  = scanner.nextInt();
@@ -56,6 +62,8 @@ public class Esm {
                 in = scanner.next();
 
         }
+
+        storage.save(list);
         System.out.println("Fare thee well\n");
 
     }
