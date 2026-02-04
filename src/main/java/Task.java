@@ -23,6 +23,10 @@ public class Task {
         return this.done;
     }
 
+    public String getType() {
+        return this.type;
+    }
+
     @Override
     public String toString() {
         return "[" + this.type + "][" + this.done + "] " + this.name;
