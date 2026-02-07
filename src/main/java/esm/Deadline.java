@@ -1,4 +1,6 @@
-public class Deadline extends Task{
+package esm;
+
+public class Deadline extends Task {
 
     private String deadline;
     public Deadline(String[] nameAndDeadline) {

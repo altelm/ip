@@ -1,3 +1,5 @@
+package esm;
+
 public class Parser {
 
     public static Command parseInput(String input) throws ParserException {

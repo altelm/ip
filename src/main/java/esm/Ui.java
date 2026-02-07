@@ -1,3 +1,5 @@
+package esm;
+
 import java.util.Scanner;
 
 public class Ui {
@@ -20,56 +22,56 @@ public class Ui {
 
             try {
                 switch (command.getType()) {
-                    case EMPTY:
+                    case Command.Type.EMPTY:
                         System.out.println("Words are required, lest thy task vanish into nothingness.");
                         break;
-                    case LIST:
+                    case Command.Type.LIST:
                         tasklist.print();
                         break;
-                    case MARK: {
+                    case Command.Type.MARK: {
                         int index = getIndex(tasklist, command.getIndex());
                         tasklist.mark(index);
                         System.out.println("Lo, I have set this task down as finished:)\n" + tasklist.getTask(index));
                         break;
                     }
-                    case UNMARK: {
+                    case Command.Type.UNMARK: {
                         int index = getIndex(tasklist, command.getIndex());
                         tasklist.unmark(index);
                         System.out.println("It is undone, and so marked in thy ledger:(\n" + tasklist.getTask(index));
                         break;
                     }
-                    case DELETE: {
+                    case Command.Type.DELETE: {
                         int index = getIndex(tasklist, command.getIndex());
                         Task temptask = tasklist.remove(index);
                         System.out.println("Thy request is heeded—the task is expunged.\n" + temptask +
                                 "\nThy ledger now holdeth " + tasklist.getSize() + " task(s)");
                         break;
                     }
-                    case TODO: {
+                    case Command.Type.TODO: {
                         Task temptask = new ToDo(command.getInfo());
                         tasklist.add(temptask);
                         System.out.println("Aye tis done.\n" + temptask + "\nThy ledger now holdeth "
                                 + tasklist.getSize() + " task(s)");
                         break;
                     }
-                    case DEADLINE: {
+                    case Command.Type.DEADLINE: {
                         Task temptask = new Deadline(command.getInfo().split("/"));
                         tasklist.add(temptask);
                         System.out.println("Aye tis done.\n" + temptask + "\nThy ledger now holdeth "
                                 + tasklist.getSize() + " task(s)");
                         break;
                     }
-                    case EVENT: {
+                    case Command.Type.EVENT: {
                         Task temptask = new Event(command.getInfo().split("/"));
                         tasklist.add(temptask);
                         System.out.println("Aye tis done.\n" + temptask + "\nThy ledger now holdeth "
                                 + tasklist.getSize() + " task(s)");
                         break;
                     }
-                    case GIBBERSIH:
+                    case Command.Type.GIBBERSIH:
                         System.out.println("I confess myself ignorant of thy intent");
                         break;
-                    case BYE:
+                    case Command.Type.BYE:
                         storage.save(tasklist.getList());
                         System.out.println("Fare thee well\n");
                         return;
@@ -80,7 +82,7 @@ public class Ui {
         }
     }
 
-    private int getIndex(TaskList tasklist, int i) throws ParserException{
+    private int getIndex(TaskList tasklist, int i) throws ParserException {
         if (tasklist.getSize() == 0) {
             throw new ParserException("Thy ledger is empty");
         } else if (i < 0 || i > tasklist.getSize()) {
