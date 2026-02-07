@@ -1,3 +1,5 @@
+package esm;
+
 public class Command {
 
     private Type type;
