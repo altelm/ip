@@ -18,6 +18,9 @@ public class TaskList {
     }
 
     public Task remove(int i) {
+        if(i < 0 || i > this.tasklist.size()) {
+            return null;
+        }
         return this.tasklist.remove(i-1);
     }
 
@@ -30,12 +33,16 @@ public class TaskList {
     }
 
     public Task getTask(int i) {
+        if (i < 0 || i > this.tasklist.size()) {
+            return null;
+        }
         return this.tasklist.get(i-1);
     }
 
     public int getSize() {
         return this.tasklist.size();
     }
+
     public void print() {
         if(getSize() == 0) {
             System.out.println("Thy ledger is empty");
