@@ -67,7 +67,7 @@ public class Storage {
 		}
 
 	}
-	public Task getTask(String line) {
+	public static Task getTask(String line) {
 
 		String[] parsed = line.split("\\s*\\|\\s*");
 

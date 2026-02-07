@@ -10,7 +10,8 @@ public class Esm {
         Path path = Paths.get("data", "esm.txt");
         Storage storage = new Storage(path);
         Ui ui = new Ui();
-        ui.run(storage);
+        TaskList taskList = new TaskList(storage.load());
+        storage.save(ui.run(taskList).getList());
 
     }
 
