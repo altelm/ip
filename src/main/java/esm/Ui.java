@@ -2,8 +2,16 @@ package esm;
 
 import java.util.Scanner;
 
+/**
+ * Handles the user interaction and user commands
+ */
 public class Ui {
 
+    /**
+     * Runs the user interaction platform and updates the tasklist according the user command
+     * @param tasklist
+     * @return
+     */
     public TaskList run (TaskList tasklist)  {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Greetings I am thy humble Esm\nSpeak and I shall head the!\n");
@@ -66,7 +74,7 @@ public class Ui {
                                 + tasklist.getSize() + " task(s)");
                         break;
                     }
-                    case GIBBERSIH:
+                    case GIBBERISH:
                         System.out.println("I confess myself ignorant of thy intent");
                         break;
                     case BYE:
@@ -79,6 +87,13 @@ public class Ui {
         }
     }
 
+    /**
+     * Returns the index of the element a certain command will act on
+     * @param tasklist tasklist of the user
+     * @param i index of the elment to be manipulated
+     * @return
+     * @throws ParserException
+     */
     private int getIndex(TaskList tasklist, int i) throws ParserException {
         if (tasklist.getSize() == 0) {
             throw new ParserException("Thy ledger is empty");

@@ -8,13 +8,24 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.StandardOpenOption;
 
+/**
+ * Represents a storage mechansim for the list used by the ESM application
+ */
 public class Storage {
 	private final Path source;
 
+	/**
+	 * Creates a path object with the specified source
+	 * @param source
+	 */
 	public Storage(Path source) {
 		this.source = source;
 	}
 
+	/**
+	 * Loads the file containing the saved list from the disk
+	 * @return
+	 */
 	public ArrayList<Task> load() {
 		ArrayList<Task> tasks = new ArrayList<>();
 
@@ -47,6 +58,10 @@ public class Storage {
 		return tasks;
 	}
 
+	/**
+	 * Saves the new list acquired after ending the session with ESM application into the same file in memory
+	 * @param tasks arraylist of the new task list
+	 */
 	public void save(ArrayList<Task> tasks)  {
 
 		ArrayList<String> lines = new ArrayList<>();
@@ -67,6 +82,12 @@ public class Storage {
 		}
 
 	}
+
+	/**
+	 * Returns the task saved in a single lined in the loaded file
+	 * @param line line we want to extract the task from
+	 * @return
+	 */
 	public static Task getTask(String line) {
 
 		String[] parsed = line.split("\\s*\\|\\s*");
