@@ -3,18 +3,18 @@ package esm;
 public class Task {
 
     private String name;
-    private String done;
+    private String isDone;
     private String type;
 
 
     public Task(String type, String name) {
         this.name = name;
-        this.done = "";
+        this.isDone = "";
         this.type = type;
     }
 
     public void setDone(String done) {
-        this.done = done;
+        this.isDone = done;
     }
 
     public String getName(){
@@ -22,7 +22,7 @@ public class Task {
     }
 
     public String getDone() {
-        return this.done;
+        return this.isDone;
     }
 
     public String getType() {
@@ -31,6 +31,6 @@ public class Task {
 
     @Override
     public String toString() {
-        return "[" + this.type + "][" + this.done + "] " + this.name;
+        return "[" + this.type + "][" + this.isDone + "] " + this.name;
     }
 }
