@@ -10,7 +10,7 @@ public class Task {
      * If task is done is represented as string.
      */
     private String name;
-    private String done;
+    private String isDone;
     private String type;
 
     /**
@@ -20,7 +20,7 @@ public class Task {
      */
     public Task(String type, String name) {
         this.name = name;
-        this.done = "";
+        this.isDone = "";
         this.type = type;
     }
 
@@ -29,7 +29,7 @@ public class Task {
      * @param done
      */
     public void setDone(String done) {
-        this.done = done;
+        this.isDone = done;
     }
 
     /**
@@ -44,7 +44,7 @@ public class Task {
      * Returns weither the task is done or not
      */
     public String getDone() {
-        return this.done;
+        return this.isDone;
     }
 
     /**
@@ -61,6 +61,6 @@ public class Task {
      */
     @Override
     public String toString() {
-        return "[" + this.type + "][" + this.done + "] " + this.name;
+        return "[" + this.type + "][" + this.isDone + "] " + this.name;
     }
 }

@@ -6,15 +6,15 @@ package esm;
  */
 public class Command {
 
-    private Type type;
+    private CommandType commandType;
     private int elemIndex;
     private String info;
 
     /**
      * Represents the type of user command
      */
-    public enum Type {
-        LIST, MARK, UNMARK, DELETE, TODO, DEADLINE, EVENT, EMPTY, GIBBERISH, BYE
+    public enum CommandType {
+        LIST, MARK, UNMARK, DELETE, TODO, DEADLINE, EVENT, EMPTY, GIBBERSIH, BYE
     }
 
     /**
@@ -22,8 +22,8 @@ public class Command {
      * @param type type of command
      * @param elemIndex index of element in the array that command will work on
      */
-    public Command(Type type, int elemIndex) {
-        this.type = type;
+    public Command(CommandType commandType, int elemIndex) {
+        this.commandType = commandType;
         this.elemIndex = elemIndex;
     }
 
@@ -31,8 +31,8 @@ public class Command {
      * Creates a command with the specified type
      * @param type type of command
      */
-    public Command(Type type) {
-        this.type = type;
+    public Command(CommandType commandType) {
+        this.commandType = commandType;
     }
 
     /**
@@ -40,8 +40,8 @@ public class Command {
      * @param type type of command
      * @param info info required for the command
      */
-    public Command(Type type, String info) {
-        this.type = type;
+    public Command(CommandType commandType, String info) {
+        this.commandType = commandType;
         this.info = info;
     }
 
@@ -49,8 +49,9 @@ public class Command {
      * Returns the type of command for the user command
      * @return
      */
-    public Type getType() {
-        return this.type;
+    public CommandType getType() {
+        return this.commandType;
+
     }
 
     /**

@@ -5,8 +5,8 @@ package esm;
  */
 public class Event extends Task {
 
-    private String start;
-    private String end;
+    private String startDate;
+    private String endDate;
 
     /**
      * Creates an Event with a given name, start, and end date.
@@ -14,8 +14,8 @@ public class Event extends Task {
      */
     public Event(String[] info) {
         super("E",  info[0]);
-        this.start = info[1].substring(5);
-        this.end = info[2].substring(3);
+        this.startDate = info[1].substring(5);
+        this.endDate = info[2].substring(3);
     }
 
     /**
@@ -24,6 +24,6 @@ public class Event extends Task {
      */
     @Override
     public String toString() {
-        return super.toString() + "(from: " + this.start + " to: " + this.end + ")";
+        return super.toString() + "(from: " + this.startDate + " to: " + this.endDate + ")";
     }
 }
