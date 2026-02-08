@@ -2,30 +2,30 @@ package esm;
 
 public class Command {
 
-    private Type type;
+    private CommandType commandType;
     private int elemIndex;
     private String info;
 
-    public enum Type {
+    public enum CommandType {
         LIST, MARK, UNMARK, DELETE, TODO, DEADLINE, EVENT, EMPTY, GIBBERSIH, BYE
     }
 
-    public Command(Type type, int elemIndex) {
-        this.type = type;
+    public Command(CommandType commandType, int elemIndex) {
+        this.commandType = commandType;
         this.elemIndex = elemIndex;
     }
 
-    public Command(Type type) {
-        this.type = type;
+    public Command(CommandType commandType) {
+        this.commandType = commandType;
     }
 
-    public Command(Type type, String info) {
-        this.type = type;
+    public Command(CommandType commandType, String info) {
+        this.commandType = commandType;
         this.info = info;
     }
 
-    public Type getType() {
-        return this.type;
+    public CommandType getType() {
+        return this.commandType;
     }
 
     public int getIndex() {

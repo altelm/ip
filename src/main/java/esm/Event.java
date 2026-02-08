@@ -4,6 +4,7 @@ public class Event extends Task {
 
     private String startDate;
     private String endDate;
+
     public Event(String[] info) {
         super("E",  info[0]);
         this.startDate = info[1].substring(5);

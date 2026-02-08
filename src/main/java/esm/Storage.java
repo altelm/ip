@@ -9,28 +9,28 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.StandardOpenOption;
 
 public class Storage {
-	private final Path source;
+	private final Path filePath;
 
-	public Storage(Path source) {
-		this.source = source;
+	public Storage(Path filePath) {
+		this.filePath = filePath;
 	}
 
-	public ArrayList<Task> load() {
+	public ArrayList<Task> loadFile() {
 		ArrayList<Task> tasks = new ArrayList<>();
 
 
-		if (!Files.exists(this.source)) {
+		if (!Files.exists(this.filePath)) {
 			return tasks;
 		}
 
 		try {
-			if(this.source.getParent()!=null) {Files.createDirectories(this.source.getParent());}
+			if(this.filePath.getParent()!=null) {Files.createDirectories(this.filePath.getParent());}
 		} catch (IOException e) {
 			System.out.println("Could not create data folder");
 		}
 
 		try {
-			List<String> lines = Files.readAllLines(this.source);
+			List<String> lines = Files.readAllLines(this.filePath);
 			for (String line : lines) {
 				if (line.trim().isEmpty()) continue;
 
@@ -47,7 +47,7 @@ public class Storage {
 		return tasks;
 	}
 
-	public void save(ArrayList<Task> tasks)  {
+	public void saveFile(ArrayList<Task> tasks)  {
 
 		ArrayList<String> lines = new ArrayList<>();
 
@@ -57,10 +57,10 @@ public class Storage {
 		}
 
 		try {
-			if (this.source.getParent() != null) {
-				Files.createDirectories(this.source.getParent());
+			if (this.filePath.getParent() != null) {
+				Files.createDirectories(this.filePath.getParent());
 			}
-			Files.write(this.source, lines, StandardCharsets.UTF_8,
+			Files.write(this.filePath, lines, StandardCharsets.UTF_8,
 					StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
 		} catch (IOException e) {
 			System.out.println("Cannot save file properly");
