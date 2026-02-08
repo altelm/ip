@@ -74,6 +74,10 @@ public class Ui {
                             + tasklist.getSize() + " task(s)");
                     break;
                 }
+                case FIND:{
+                    TaskList tasks = tasklist.find(command.getInfo());
+                    tasks.print();
+                }
                 case GIBBERSIH:
                     System.out.println("I confess myself ignorant of thy intent");
                     break;

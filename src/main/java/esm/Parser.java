@@ -38,6 +38,8 @@ public class Parser {
         } else if (parts[0].equalsIgnoreCase("event")) {
             if (info.isEmpty()) throw new ParserException("Thous thought is incomplete,thou must provide more thought");
             return new Command(Command.CommandType.EVENT, info);
+        } else if (parts[0].equalsIgnoreCase("find")) {
+            return new Command(Command.CommandType.FIND, info);
         } else {
             return new Command(Command.CommandType.GIBBERSIH);
         }

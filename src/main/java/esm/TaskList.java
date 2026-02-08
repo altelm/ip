@@ -84,6 +84,16 @@ public class TaskList {
     /**
      * Prints the currents status of the task list.
      */
+    public TaskList find(String info) {
+        ArrayList<Task> tasks = new  ArrayList<>();
+        for(int i = 0; i < this.taskList.size(); i++) {
+            if(this.taskList.get(i).getName().contains(info)) {
+                tasks.add(this.taskList.get(i));
+            }
+        }
+        return new TaskList(tasks);
+    }
+
     public void print() {
         if(getSize() == 0) {
             System.out.println("Thy ledger is empty");

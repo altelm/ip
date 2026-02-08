@@ -14,7 +14,7 @@ public class Command {
      * Represents the type of user command
      */
     public enum CommandType {
-        LIST, MARK, UNMARK, DELETE, TODO, DEADLINE, EVENT, EMPTY, GIBBERSIH, BYE
+        LIST, MARK, UNMARK, DELETE, TODO, DEADLINE, EVENT, EMPTY, GIBBERSIH, BYE, FIND
     }
 
     /**
