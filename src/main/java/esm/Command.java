@@ -7,7 +7,7 @@ public class Command {
     private String info;
 
     public enum Type {
-        LIST, MARK, UNMARK, DELETE, TODO, DEADLINE, EVENT, EMPTY, GIBBERSIH, BYE
+        LIST, MARK, UNMARK, DELETE, TODO, DEADLINE, EVENT, EMPTY, GIBBERSIH, BYE, FIND
     }
 
     public Command(Type type, int elemIndex) {

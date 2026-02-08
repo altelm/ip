@@ -43,6 +43,16 @@ public class TaskList {
         return this.tasklist.size();
     }
 
+    public TaskList find(String info) {
+        ArrayList<Task> tasks = new  ArrayList<>();
+        for(int i = 0; i < this.tasklist.size(); i++) {
+            if(this.tasklist.get(i).getName().contains(info)) {
+                tasks.add(this.tasklist.get(i));
+            }
+        }
+        return new TaskList(tasks);
+    }
+
     public void print() {
         if(getSize() == 0) {
             System.out.println("Thy ledger is empty");
