@@ -30,7 +30,7 @@ public class Parser {
             if (info.isEmpty()) throw new ParserException("Thous thought is incomplete,thou must provide more thought");
             return new Command(Command.Type.EVENT, info);
         } else {
-            return new Command(Command.Type.GIBBERSIH);
+            return new Command(Command.Type.GIBBERISH);
         }
     }
 

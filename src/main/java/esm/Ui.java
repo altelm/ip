@@ -66,7 +66,7 @@ public class Ui {
                                 + tasklist.getSize() + " task(s)");
                         break;
                     }
-                    case GIBBERSIH:
+                    case GIBBERISH:
                         System.out.println("I confess myself ignorant of thy intent");
                         break;
                     case BYE:
