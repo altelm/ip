@@ -19,8 +19,8 @@ public class Command {
 
     /**
      * Creates a command with the specified type and element index
-     * @param type
-     * @param elemIndex
+     * @param type type of command
+     * @param elemIndex index of element in the array that command will work on
      */
     public Command(Type type, int elemIndex) {
         this.type = type;
@@ -29,7 +29,7 @@ public class Command {
 
     /**
      * Creates a command with the specified type
-     * @param type
+     * @param type type of command
      */
     public Command(Type type) {
         this.type = type;
@@ -37,8 +37,8 @@ public class Command {
 
     /**
      * Creates a command with the specified type and required information
-     * @param type
-     * @param info
+     * @param type type of command
+     * @param info info required for the command
      */
     public Command(Type type, String info) {
         this.type = type;
@@ -65,7 +65,6 @@ public class Command {
      * Returns the required info for the task associated with the specific command
      * @return
      */
-
     public String getInfo() {
         return this.info;
     }

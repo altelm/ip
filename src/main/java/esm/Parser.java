@@ -1,7 +1,16 @@
 package esm;
 
+/**
+ * Parses user input to extract required data.
+ */
 public class Parser {
 
+    /**
+     * Parses a single user input to extract the command to be executed
+     * @param input user input
+     * @return
+     * @throws ParserException
+     */
     public static Command parseInput(String input) throws ParserException {
         if (input == null || input.trim().isEmpty()) {
             return new Command(Command.Type.EMPTY);
@@ -34,6 +43,13 @@ public class Parser {
         }
     }
 
+    /**
+     * Parses a user input to extract the index of the element for the command to be executed on.
+     * Returns the extracted index.
+     * @param input single line of user input
+     * @return
+     * @throws ParserException
+     */
     private static int parseIndex(String input) throws ParserException {
         String[] arguments = input.split("\\s+");
         if(arguments.length > 1) {
