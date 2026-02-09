@@ -26,5 +26,5 @@ Features:
 Some basic commands are
 ```
 todo <task>
-deadline <task \by yyyy-mm-dd>
+deadline <task /by yyyy-mm-dd>
 ```
