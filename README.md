@@ -12,7 +12,7 @@ It's:
 - Structured
 
 All you need to do is:
-1. download it from here
+1. download it from [here](https://github.com/altelm/ip.git)
 2. double click it
 3. add your tasks
 4. let it manage your tasks for you
