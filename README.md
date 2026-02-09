@@ -1,6 +1,19 @@
-# Duke project template
+# Esm
 
-This is a project template for a greenfield Java project. It's named after the Java mascot _Duke_. Given below are instructions on how to use it.
+<Built to remeber when the world tries to forget>
+
+Esm is built for you to focus on doing.
+It's:
+- text-based
+- easy to learn
+- Very fast
+- Structured
+
+All you need to do is:
+1. download it from here
+2. double click it
+3. add your tasks
+4. let it manage your tasks for you
 
 ## Setting up in Intellij
 
