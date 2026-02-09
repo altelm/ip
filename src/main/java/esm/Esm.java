@@ -77,7 +77,8 @@ public class Esm {
                     + taskList.getSize() + " task(s)");
         }
         case DEADLINE: {
-            Task temptask = new Deadline(command.getInfo().split("/"));
+            String[] nameAndDeadline = command.getInfo().split("/by");
+            Task temptask = new Deadline(nameAndDeadline[0].trim(), nameAndDeadline[1].trim());
             taskList.add(temptask);
             return ("Aye tis done.\n" + temptask + "\nThy ledger now holdeth "
                     + taskList.getSize() + " task(s)");

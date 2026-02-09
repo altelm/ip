@@ -39,7 +39,8 @@ public class Storage {
         if (parsed[0].equals("T")) {
             task = new ToDo(parsed[2]);
         } else if (parsed[0].equals("D")) {
-            task = new Deadline(parsed[2].trim().split("\\s+"));
+            String[] nameAndDeadline = parsed[2].trim().split("/by");
+            task = new Deadline(nameAndDeadline[0].trim(), nameAndDeadline[1].trim());
         } else if (parsed[0].equals("E")) {
             task = new Event(parsed[2].trim().split("\\s+"));
         } else {

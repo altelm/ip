@@ -13,13 +13,14 @@ public class Deadline extends Task {
 
     /**
      * Creates a Deadline task from the given array of nameAndDeadline
-     * @param nameAndDeadline array with the name of the task in index 0 and the deadline in index 1
+     * @param name name of task to be done
+     * @param deadline date deadline of task
      */
-    public Deadline(String[] nameAndDeadline) {
-        super("D", nameAndDeadline[0]);
+    public Deadline(String name, String deadline) {
+        super("D", name);
 
         try {
-            this.deadline = LocalDate.parse(nameAndDeadline[1].trim());
+            this.deadline = LocalDate.parse(deadline.trim());
         } catch (DateTimeParseException e) {
             System.out.println(
                     "Thy should use format YYYY-MM-DD");
