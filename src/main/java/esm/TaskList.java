@@ -11,7 +11,8 @@ public class TaskList {
 
     /**
      * Creates a TaskList from the given arraylist of tasks.
-     * @param tasklist
+     *
+     * @param taskList
      */
     public TaskList(ArrayList<Task> taskList) {
         this.taskList = taskList;
@@ -19,6 +20,7 @@ public class TaskList {
 
     /**
      * Marks the specific element in the list given by the index as done.
+     *
      * @param i index of the task element.
      */
     public void mark(int i) {
@@ -27,6 +29,7 @@ public class TaskList {
 
     /**
      * Marks the specific element in the list given by the index as not done.
+     *
      * @param i index of the task element.
      */
     public void unmark(int i) {
@@ -35,18 +38,20 @@ public class TaskList {
 
     /**
      * Removes and then returns a specific element from the tasklist.
+     *
      * @param i index of the element.
      * @return
      */
     public Task remove(int i) {
-        if(i < 0 || i > this.taskList.size()) {
+        if (i < 0 || i > this.taskList.size()) {
             return null;
         }
-        return this.taskList.remove(i-1);
+        return this.taskList.remove(i - 1);
     }
 
     /**
      * Adds a task to the task list.
+     *
      * @param task task to be added to list.
      */
     public void add(Task task) {
@@ -55,6 +60,7 @@ public class TaskList {
 
     /**
      * Returns the arraylist format of the current task list.
+     *
      * @return
      */
     public ArrayList<Task> getList() {
@@ -63,6 +69,7 @@ public class TaskList {
 
     /**
      * Returns a specific element in the task list given by the index.
+     *
      * @param i index of element to be returned.
      * @return
      */
@@ -70,11 +77,12 @@ public class TaskList {
         if (i < 0 || i > this.taskList.size()) {
             return null;
         }
-        return this.taskList.get(i-1);
+        return this.taskList.get(i - 1);
     }
 
     /**
      * Returns the size of the task list.
+     *
      * @return
      */
     public int getSize() {
@@ -85,22 +93,27 @@ public class TaskList {
      * Prints the currents status of the task list.
      */
     public TaskList find(String info) {
-        ArrayList<Task> tasks = new  ArrayList<>();
-        for(int i = 0; i < this.taskList.size(); i++) {
-            if(this.taskList.get(i).getName().contains(info)) {
+        ArrayList<Task> tasks = new ArrayList<>();
+        for (int i = 0; i < this.taskList.size(); i++) {
+            if (this.taskList.get(i).getName().contains(info)) {
                 tasks.add(this.taskList.get(i));
             }
         }
         return new TaskList(tasks);
     }
 
-    public void print() {
-        if(getSize() == 0) {
-            System.out.println("Thy ledger is empty");
-            return;
+    /**
+     * Prints the list of taks in order, or informs the user if the list is empty.
+     */
+    public String print() {
+        if (getSize() == 0) {
+            return ("Thy ledger is empty");
         }
-        for(int i = 1; i <= this.taskList.size(); i++) {
-            System.out.println( i + ". " + this.taskList.get(i-1));
+
+        String toPrint = "";
+        for (int i = 1; i <= this.taskList.size(); i++) {
+            toPrint += (i + ". " + this.taskList.get(i - 1)) + "\n";
         }
+        return toPrint;
     }
 }

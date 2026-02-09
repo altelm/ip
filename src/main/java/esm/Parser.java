@@ -30,13 +30,19 @@ public class Parser {
         } else if (parts[0].equalsIgnoreCase("unmark")) {
             return new Command(Command.CommandType.UNMARK, parseIndex(info));
         } else if (parts[0].equalsIgnoreCase("todo")) {
-            if (info.isEmpty()) throw new ParserException("Thous thought is incomplete,thou must provide more thought");
+            if (info.isEmpty()) {
+                throw new ParserException("Thous thought is incomplete,thou must provide more thought");
+            }
             return new Command(Command.CommandType.TODO, info);
         } else if (parts[0].equalsIgnoreCase("deadline")) {
-            if (info.isEmpty()) throw new ParserException("Thous thought is incomplete,thou must provide more thought");
+            if (info.isEmpty()) {
+                throw new ParserException("Thous thought is incomplete,thou must provide more thought");
+            }
             return new Command(Command.CommandType.DEADLINE, info);
         } else if (parts[0].equalsIgnoreCase("event")) {
-            if (info.isEmpty()) throw new ParserException("Thous thought is incomplete,thou must provide more thought");
+            if (info.isEmpty()) {
+                throw new ParserException("Thous thought is incomplete,thou must provide more thought");
+            }
             return new Command(Command.CommandType.EVENT, info);
         } else if (parts[0].equalsIgnoreCase("find")) {
             return new Command(Command.CommandType.FIND, info);
@@ -55,7 +61,7 @@ public class Parser {
     private static int parseIndex(String input) throws ParserException {
         String[] arguments = input.split("\\s+");
 
-        if(arguments.length > 1) {
+        if (arguments.length > 1) {
             throw new ParserException("Thou provided more input than expected");
         } else if (input.isEmpty() || input == null) {
             throw new ParserException("Thou did not provide task number");

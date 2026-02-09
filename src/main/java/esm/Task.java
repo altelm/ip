@@ -36,7 +36,7 @@ public class Task {
      * Returns the name of the task.
      * @return
      */
-    public String getName(){
+    public String getName() {
         return this.name;
     }
 
