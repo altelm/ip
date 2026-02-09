@@ -11,7 +11,6 @@ public class Esm {
 
     private Path path;
     private Storage storage;
-    private Ui ui;
     private TaskList taskList;
 
     /**
