@@ -14,7 +14,7 @@ public class StorageTest {
     public void load_fileMissing_returnsEmptyList(){
         Path path = Paths.get("um", "unkown.txt");
         Storage storage = new Storage(path);
-        ArrayList<Task> taskList = storage.load();
+        ArrayList<Task> taskList = storage.loadFile();
         assertTrue(taskList.isEmpty());
     }
 
@@ -22,7 +22,7 @@ public class StorageTest {
     public void load_filePresent_returnsCorrectList() {
         Path path = Paths.get("data", "esmTest.txt");
         Storage storage = new Storage(path);
-        ArrayList<Task> taskList = storage.load();
+        ArrayList<Task> taskList = storage.loadFile();
         assertEquals(1, taskList.size());
     }
 
@@ -35,8 +35,8 @@ public class StorageTest {
         Storage storage = new Storage(path);
         ArrayList<Task> taskList = new ArrayList<>();
         taskList.add(new ToDo("cook"));
-        storage.save(taskList);
-        taskList = storage.load();
+        storage.saveFile(taskList);
+        taskList = storage.loadFile();
         assertEquals(1, taskList.size());
     }
 

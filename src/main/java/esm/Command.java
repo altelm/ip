@@ -19,7 +19,7 @@ public class Command {
 
     /**
      * Creates a command with the specified type and element index
-     * @param type type of command
+     * @param commandType type of command
      * @param elemIndex index of element in the array that command will work on
      */
     public Command(CommandType commandType, int elemIndex) {
@@ -29,7 +29,7 @@ public class Command {
 
     /**
      * Creates a command with the specified type
-     * @param type type of command
+     * @param commandType type of command
      */
     public Command(CommandType commandType) {
         this.commandType = commandType;
@@ -37,7 +37,7 @@ public class Command {
 
     /**
      * Creates a command with the specified type and required information
-     * @param type type of command
+     * @param commandType type of command
      * @param info info required for the command
      */
     public Command(CommandType commandType, String info) {

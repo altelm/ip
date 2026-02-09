@@ -13,7 +13,7 @@ public class Event extends Task {
      * @param info array with the name of event in index 0, start date in index 1, and end date in index 2
      */
     public Event(String[] info) {
-        super("E",  info[0]);
+        super("E", info[0]);
         this.startDate = info[1].substring(5);
         this.endDate = info[2].substring(3);
     }
