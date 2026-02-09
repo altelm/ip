@@ -1,11 +1,15 @@
 package esm;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 /**
  * Represents a task with a deadline.
  */
 public class Deadline extends Task {
 
-    private String deadline;
+    private LocalDate deadline;
+    private DateTimeFormatter out = DateTimeFormatter.ofPattern("MMM dd yyyy");
 
     /**
      * Creates a Deadline task from the given array of nameAndDeadline
@@ -13,7 +17,14 @@ public class Deadline extends Task {
      */
     public Deadline(String[] nameAndDeadline) {
         super("D", nameAndDeadline[0]);
-        this.deadline = nameAndDeadline[1].substring(3);
+
+        try {
+            this.deadline = LocalDate.parse(nameAndDeadline[1].trim());
+        } catch (DateTimeParseException e) {
+            System.out.println(
+                    "Thy should use format YYYY-MM-DD");
+        }
+
     }
 
     /**
@@ -22,6 +33,6 @@ public class Deadline extends Task {
      */
     @Override
     public String toString() {
-        return super.toString() + "(by: " + this.deadline + ")";
+        return super.toString() + "(by: " + this.deadline.format(out) + ")";
     }
 }
