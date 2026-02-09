@@ -1,6 +1,6 @@
 # Esm
 
-<Built to remeber when the world tries to forget>
+> Built to remeber when the world tries to forget
 
 Esm is built for you to focus on doing.
 It's:
