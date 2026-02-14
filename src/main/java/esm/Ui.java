@@ -69,7 +69,7 @@ public class Ui {
         } else if (index == -2) {
             return "Thou hath given an non-existeth ledger number";
         }
-        return ("Thy request is heeded—the task is expunged.\n" + tempTask
+        return ("Thy request is heeded the task is expunged.\n" + tempTask
                 + "\nThy ledger now holdeth " + taskList.getSize() + " task(s)");
     }
 

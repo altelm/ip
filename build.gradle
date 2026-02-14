@@ -48,7 +48,7 @@ application {
 }
 
 shadowJar {
-    archiveBaseName = "esm.jar"
+    archiveBaseName = "esm"
     archiveClassifier = null
 }
 
