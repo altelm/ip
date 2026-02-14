@@ -23,7 +23,7 @@ public class TaskList {
      *
      * @param i index of the task element.
      */
-    public void markTask(int i) {
+    public void mark(int i) {
         if (i < 0 || i > getSize()) {
             return;
         }
@@ -35,7 +35,7 @@ public class TaskList {
      *
      * @param i index of the task element.
      */
-    public void unmarkTask(int i) {
+    public void unmark(int i) {
         if (i < 0 || i > getSize()) {
             return;
         }
@@ -48,7 +48,7 @@ public class TaskList {
      * @param i index of the element.
      * @return
      */
-    public Task removeTask(int i) {
+    public Task remove(int i) {
         if (i < 0 || i > this.taskList.size()) {
             return null;
         }
@@ -60,7 +60,7 @@ public class TaskList {
      *
      * @param task task to be added to list.
      */
-    public void addTask(Task task) {
+    public void add(Task task) {
         this.taskList.add(task);
     }
 
@@ -98,7 +98,7 @@ public class TaskList {
     /**
      * Finds all the tasks with the same info and returns them
      */
-    public TaskList findTask(String info) {
+    public TaskList find(String info) {
         ArrayList<Task> tasks = new ArrayList<>();
         for (int i = 0; i < this.taskList.size(); i++) {
             if (this.taskList.get(i).getName().contains(info)) {
@@ -111,7 +111,7 @@ public class TaskList {
     /**
      * Prints the list of tasks in order, or informs the user if the list is empty.
      */
-    public String printList() {
+    public String print() {
         if (getSize() == 0) {
             return ("Thy ledger is empty");
         }

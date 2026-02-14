@@ -11,7 +11,7 @@ public class Event extends Task {
 
     private LocalDate startDate;
     private LocalDate endDate;
-    private DateTimeFormatter formattedDate = DateTimeFormatter.ofPattern("MMM dd yyyy");
+    private DateTimeFormatter out = DateTimeFormatter.ofPattern("MMM dd yyyy");
 
     /**
      * Creates an Event with a given name, start, and end date.
@@ -33,7 +33,6 @@ public class Event extends Task {
      */
     @Override
     public String toString() {
-        return super.toString() + "(from: " + this.startDate.format(formattedDate) + " to: "
-                + this.endDate.format(formattedDate) + ")";
+        return super.toString() + "(from: " + this.startDate.format(out) + " to: " + this.endDate.format(out) + ")";
     }
 }

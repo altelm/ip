@@ -9,7 +9,7 @@ import java.time.format.DateTimeParseException;
 public class Deadline extends Task {
 
     private LocalDate deadline;
-    private DateTimeFormatter formattedDate = DateTimeFormatter.ofPattern("MMM dd yyyy");
+    private DateTimeFormatter out = DateTimeFormatter.ofPattern("MMM dd yyyy");
 
     /**
      * Creates a Deadline task from the given array of nameAndDeadline
@@ -32,6 +32,6 @@ public class Deadline extends Task {
      */
     @Override
     public String toString() {
-        return super.toString() + "(by: " + this.deadline.format(formattedDate) + ")";
+        return super.toString() + "(by: " + this.deadline.format(out) + ")";
     }
 }

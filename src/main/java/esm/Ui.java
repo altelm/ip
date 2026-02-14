@@ -53,7 +53,7 @@ public class Ui {
      * @return
      */
     public String listResponse(TaskList taskList) {
-        return taskList.printList();
+        return taskList.print();
     }
 
     /**
@@ -95,7 +95,7 @@ public class Ui {
         if (tasks.getSize() == 0) {
             return "No such task was found";
         }
-        return tasks.printList();
+        return tasks.print();
     }
 
     /**
