@@ -63,7 +63,7 @@ public class Storage {
             return tasks;
         } catch (DateException e) {
             System.out.println("File format error, please edit the file");
-            return tasks;
+            return null;
         }
         return tasks;
     }
@@ -75,6 +75,7 @@ public class Storage {
      */
     public void saveFile(ArrayList<Task> tasks) {
 
+        assert tasks != null : "The list you are trying to save does not exist";
         ArrayList<String> lines = new ArrayList<>();
 
         for (Task task : tasks) {

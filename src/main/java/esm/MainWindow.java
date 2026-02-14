@@ -47,6 +47,7 @@ public class MainWindow extends AnchorPane {
      */
     @FXML
     private void handleUserInput() {
+        assert esm != null : "Restart the Program";
         String input = userInput.getText();
         String response = esm.getResponse(input);
         dialogContainer.getChildren().addAll(

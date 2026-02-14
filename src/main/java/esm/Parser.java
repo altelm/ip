@@ -38,6 +38,7 @@ public class Parser {
             if (info.isEmpty()) {
                 throw new ParserException("Thous thought is incomplete,thou must provide more thought");
             }
+            assert parts[1] != null : "Unexpected null Input";
             String[] nameAndDeadline = parts[1].split("/by");
             if (nameAndDeadline.length != 2) {
                 throw new ParserException("Thoust should try to repeat what you want correctly, see <help>");
@@ -47,6 +48,7 @@ public class Parser {
             if (info.isEmpty()) {
                 throw new ParserException("Thous thought is incomplete,thou must provide more thought");
             }
+            assert parts[1] != null : "Unexpected null Input";
             String[] infoAndDate = parts[1].split("/");
             if (infoAndDate.length != 3) {
                 throw new ParserException("Thoust should try to repeat what you want correctly, see <help>");
@@ -93,7 +95,6 @@ public class Parser {
      * @return
      */
     public static Task getSavedTask(String line) throws DateException {
-
         String[] parsed = line.split("\\s*\\|\\s*");
 
         Task task;
