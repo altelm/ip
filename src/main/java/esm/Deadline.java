@@ -16,14 +16,12 @@ public class Deadline extends Task {
      * @param name name of task to be done
      * @param deadline date deadline of task
      */
-    public Deadline(String name, String deadline) {
+    public Deadline(String name, String deadline) throws DateException {
         super("D", name);
-
         try {
             this.deadline = LocalDate.parse(deadline.trim());
         } catch (DateTimeParseException e) {
-            System.out.println(
-                    "Thy should use format YYYY-MM-DD");
+            throw new DateException("Thy should use format YYYY-MM-DD");
         }
 
     }

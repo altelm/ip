@@ -26,35 +26,6 @@ public class Storage {
     }
 
     /**
-     * Returns the task saved in a single lined in the loaded file
-     *
-     * @param line line we want to extract the task from
-     * @return
-     */
-    public static Task getTask(String line) {
-
-        String[] parsed = line.split("\\s*\\|\\s*");
-
-        Task task;
-        if (parsed[0].equals("T")) {
-            task = new ToDo(parsed[2]);
-        } else if (parsed[0].equals("D")) {
-            String[] nameAndDeadline = parsed[2].trim().split("/by");
-            task = new Deadline(nameAndDeadline[0].trim(), nameAndDeadline[1].trim());
-        } else if (parsed[0].equals("E")) {
-            task = new Event(parsed[2].trim().split("\\s+"));
-        } else {
-            return null;
-        }
-
-        if (parsed[1].equals("1")) {
-            task.setDone("1");
-        }
-
-        return task;
-    }
-
-    /**
      * Loads the file containing the saved list from the disk
      *
      * @return
@@ -82,7 +53,7 @@ public class Storage {
                     continue;
                 }
 
-                Task task = getTask(line);
+                Task task = Parser.getSavedTask(line);
                 if (task != null) {
                     tasks.add(task);
                 }
@@ -90,8 +61,10 @@ public class Storage {
 
         } catch (IOException e) {
             return tasks;
+        } catch (DateException e) {
+            System.out.println("File format error, please edit the file");
+            return tasks;
         }
-
         return tasks;
     }
 
@@ -118,6 +91,5 @@ public class Storage {
         } catch (IOException e) {
             System.out.println("Cannot save file properly");
         }
-
     }
 }

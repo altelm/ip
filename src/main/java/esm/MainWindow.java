@@ -37,6 +37,8 @@ public class MainWindow extends AnchorPane {
     /** Injects the Esm instance */
     public void setEsm(Esm e) {
         esm = e;
+        dialogContainer.getChildren().add(
+                DialogBox.getEsmDialog("Greetings I am thy humble Esm\nSpeak and I shall head the!\n", esmImage));
     }
 
     /**
@@ -49,7 +51,7 @@ public class MainWindow extends AnchorPane {
         String response = esm.getResponse(input);
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage),
-                DialogBox.getDukeDialog(response, esmImage)
+                DialogBox.getEsmDialog(response, esmImage)
         );
         userInput.clear();
 

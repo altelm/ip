@@ -24,6 +24,9 @@ public class TaskList {
      * @param i index of the task element.
      */
     public void mark(int i) {
+        if (i < 0 || i > getSize()) {
+            return;
+        }
         this.taskList.get(i - 1).setDone("X");
     }
 
@@ -33,6 +36,9 @@ public class TaskList {
      * @param i index of the task element.
      */
     public void unmark(int i) {
+        if (i < 0 || i > getSize()) {
+            return;
+        }
         this.taskList.get(i - 1).setDone("");
     }
 
@@ -90,7 +96,7 @@ public class TaskList {
     }
 
     /**
-     * Prints the currents status of the task list.
+     * Finds all the tasks with the same info and returns them
      */
     public TaskList find(String info) {
         ArrayList<Task> tasks = new ArrayList<>();
@@ -103,7 +109,7 @@ public class TaskList {
     }
 
     /**
-     * Prints the list of taks in order, or informs the user if the list is empty.
+     * Prints the list of tasks in order, or informs the user if the list is empty.
      */
     public String print() {
         if (getSize() == 0) {

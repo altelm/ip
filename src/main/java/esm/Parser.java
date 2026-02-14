@@ -38,14 +38,25 @@ public class Parser {
             if (info.isEmpty()) {
                 throw new ParserException("Thous thought is incomplete,thou must provide more thought");
             }
-            return new Command(Command.CommandType.DEADLINE, info);
+            String[] nameAndDeadline = parts[1].split("/by");
+            if (nameAndDeadline.length != 2) {
+                throw new ParserException("Thoust should try to repeat what you want correctly, see <help>");
+            }
+            return new Command(Command.CommandType.DEADLINE, nameAndDeadline[0].trim(), nameAndDeadline[1].trim());
         } else if (parts[0].equalsIgnoreCase("event")) {
             if (info.isEmpty()) {
                 throw new ParserException("Thous thought is incomplete,thou must provide more thought");
             }
-            return new Command(Command.CommandType.EVENT, info);
+            String[] infoAndDate = parts[1].split("/");
+            if (infoAndDate.length != 3) {
+                throw new ParserException("Thoust should try to repeat what you want correctly, see <help>");
+            }
+            return new Command(Command.CommandType.EVENT, infoAndDate[0].trim(),
+                    infoAndDate[1].trim(), infoAndDate[2].trim());
         } else if (parts[0].equalsIgnoreCase("find")) {
             return new Command(Command.CommandType.FIND, info);
+        } else if (parts[0].equalsIgnoreCase("help")) {
+            return new Command(Command.CommandType.HELP);
         } else {
             return new Command(Command.CommandType.GIBBERSIH);
         }
@@ -73,4 +84,36 @@ public class Parser {
             throw new ParserException("Thou provided an invalid command");
         }
     }
+
+
+    /**
+     * Returns the task saved in a single lined in a loaded file
+     *
+     * @param line line we want to extract the task from
+     * @return
+     */
+    public static Task getSavedTask(String line) throws DateException {
+
+        String[] parsed = line.split("\\s*\\|\\s*");
+
+        Task task;
+        if (parsed[0].equals("T")) {
+            task = new ToDo(parsed[2]);
+        } else if (parsed[0].equals("D")) {
+            String[] nameAndDeadline = parsed[2].trim().split("/by");
+            task = new Deadline(nameAndDeadline[0].trim(), nameAndDeadline[1].trim());
+        } else if (parsed[0].equals("E")) {
+            String[] infoAndDate = parsed[2].trim().split("/");
+            task = new Event(infoAndDate[0], infoAndDate[1], infoAndDate[2]);
+        } else {
+            return null;
+        }
+
+        if (parsed[1].equals("1")) {
+            task.setDone("1");
+        }
+
+        return task;
+    }
+
 }

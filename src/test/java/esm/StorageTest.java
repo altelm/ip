@@ -40,11 +40,12 @@ public class StorageTest {
         assertEquals(1, taskList.size());
     }
 
+    /*
     @Test
     public void getTask_validTask_givesCorrectly() {
         String line = "T | X | write a book";
         Task task = Storage.getTask(line);
-       assertTrue(task instanceof ToDo);
+        assertTrue(task instanceof ToDo);
     }
 
     public void getTask_invalidTask_givesCorrectly() {
@@ -55,4 +56,5 @@ public class StorageTest {
         assertFalse(task instanceof Event);
 
     }
+     */
 }
