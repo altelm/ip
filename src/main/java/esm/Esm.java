@@ -46,28 +46,28 @@ public class Esm {
             case LIST:
                 return ui.listResponse(this.taskList);
             case MARK: {
-                taskList.mark(command.getIndex());
+                taskList.markTask(command.getIndex());
                 return ui.markResponse(command.getIndex(), this.taskList);
             }
             case UNMARK: {
-                taskList.unmark(command.getIndex());
+                taskList.unmarkTask(command.getIndex());
                 return ui.unmarkResponse(command.getIndex(), this.taskList);
             }
             case DELETE: {
-                Task tempTask = this.taskList.remove(command.getIndex());
+                Task tempTask = this.taskList.removeTask(command.getIndex());
                 return ui.deleteResponse(this.taskList, tempTask, command.getIndex());
             }
             case TODO: {
                 assert command.getInfo() != null && command.getInfo() != "" : "ToDo info is missing";
                 Task temptask = new ToDo(command.getInfo());
-                taskList.add(temptask);
+                taskList.addTask(temptask);
                 return ui.taskResponse(this.taskList, temptask);
             }
             case DEADLINE: {
                 assert command.getInfo() != null && command.getInfo() != "" : "Deadline info is missing";
                 assert command.getDeadline() != null && command.getDeadline() != "" : "Deadline date is missing";
                 Task tempTask = new Deadline(command.getInfo(), command.getDeadline());
-                taskList.add(tempTask);
+                taskList.addTask(tempTask);
                 return ui.taskResponse(this.taskList, tempTask);
             }
             case EVENT: {
@@ -75,11 +75,11 @@ public class Esm {
                 assert command.getStartDate() != null && command.getStartDate() != "" : "Event start date is missing";
                 assert command.getEndDate() != null && command.getEndDate() != "" : "Event end date is missing";
                 Task temptask = new Event(command.getInfo(), command.getStartDate(), command.getEndDate());
-                taskList.add(temptask);
+                taskList.addTask(temptask);
                 return ui.taskResponse(this.taskList, temptask);
             }
             case FIND: {
-                TaskList tasks = taskList.find(command.getInfo());
+                TaskList tasks = taskList.findTask(command.getInfo());
                 return ui.findTaskResponse(tasks);
             }
             case GIBBERSIH:
