@@ -43,35 +43,35 @@ public class Esm {
             case LIST:
                 return ui.listResponse(this.taskList);
             case MARK: {
-                taskList.mark(command.getIndex());
+                taskList.markTask(command.getIndex());
                 return ui.markResponse(command.getIndex(), this.taskList);
             }
             case UNMARK: {
-                taskList.unmark(command.getIndex());
+                taskList.unmarkTask(command.getIndex());
                 return ui.unmarkResponse(command.getIndex(), this.taskList);
             }
             case DELETE: {
-                Task tempTask = this.taskList.remove(command.getIndex());
+                Task tempTask = this.taskList.removeTask(command.getIndex());
                 return ui.deleteResponse(this.taskList, tempTask, command.getIndex());
             }
             case TODO: {
                 Task temptask = new ToDo(command.getInfo());
-                taskList.add(temptask);
+                taskList.addTask(temptask);
                 return ui.taskResponse(this.taskList, temptask);
             }
             case DEADLINE: {
                 Task tempTask = new Deadline(command.getInfo(), command.getDeadline());
-                taskList.add(tempTask);
+                taskList.addTask(tempTask);
                 return ui.taskResponse(this.taskList, tempTask);
             }
             case EVENT: {
                 Task temptask = new Event(command.getInfo(), command.getStartDate(), command.getEndDate());
-                taskList.add(temptask);
+                taskList.addTask(temptask);
                 return ui.taskResponse(this.taskList, temptask);
             }
             case FIND: {
-                TaskList tasks = taskList.find(command.getInfo());
-                return ui.findResponse(tasks);
+                TaskList tasks = taskList.findTask(command.getInfo());
+                return ui.findTaskResponse(tasks);
             }
             case GIBBERSIH:
                 return ui.gibberishResponse();
