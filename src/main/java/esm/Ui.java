@@ -91,7 +91,7 @@ public class Ui {
      * @param tasks
      * @return
      */
-    public String findResponse(TaskList tasks) {
+    public String findTaskResponse(TaskList tasks) {
         if (tasks.getSize() == 0) {
             return "No such task was found";
         }

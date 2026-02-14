@@ -2,7 +2,7 @@ package esm;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
+import java.util.ArrayList;
 /**
  * Entry point for the ESM.
  * Starts and end the session for ESM application by setting up the UI and Storage (loading and saving the file).
@@ -20,7 +20,9 @@ public class Esm {
     public Esm() {
         this.path = Paths.get("data", "esm.txt");
         this.storage = new Storage(path);
-        this.taskList = new TaskList(storage.loadFile());
+        ArrayList<Task> tempList = storage.loadFile();
+        assert tempList != null : "Check your file, file should not be null";
+        this.taskList = new TaskList(tempList);
         this.ui = new Ui();
 
     }
@@ -36,6 +38,7 @@ public class Esm {
             return (e.getMessage());
         }
 
+        assert command != null : "Command should not be null";
         try {
             switch (command.getType()) {
             case EMPTY:
@@ -55,23 +58,29 @@ public class Esm {
                 return ui.deleteResponse(this.taskList, tempTask, command.getIndex());
             }
             case TODO: {
+                assert command.getInfo() != null && command.getInfo() != "" : "ToDo info is missing";
                 Task temptask = new ToDo(command.getInfo());
                 taskList.add(temptask);
                 return ui.taskResponse(this.taskList, temptask);
             }
             case DEADLINE: {
+                assert command.getInfo() != null && command.getInfo() != "" : "Deadline info is missing";
+                assert command.getDeadline() != null && command.getDeadline() != "" : "Deadline date is missing";
                 Task tempTask = new Deadline(command.getInfo(), command.getDeadline());
                 taskList.add(tempTask);
                 return ui.taskResponse(this.taskList, tempTask);
             }
             case EVENT: {
+                assert command.getInfo() != null && command.getInfo() != "" : "Event info is missing";
+                assert command.getStartDate() != null && command.getStartDate() != "" : "Event start date is missing";
+                assert command.getEndDate() != null && command.getEndDate() != "" : "Event end date is missing";
                 Task temptask = new Event(command.getInfo(), command.getStartDate(), command.getEndDate());
                 taskList.add(temptask);
                 return ui.taskResponse(this.taskList, temptask);
             }
             case FIND: {
                 TaskList tasks = taskList.find(command.getInfo());
-                return ui.findResponse(tasks);
+                return ui.findTaskResponse(tasks);
             }
             case GIBBERSIH:
                 return ui.gibberishResponse();
