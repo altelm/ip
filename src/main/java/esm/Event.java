@@ -27,6 +27,11 @@ public class Event extends Task {
         }
     }
 
+    @Override
+    public String getSortDate() {
+        return this.endDate.toString();
+    }
+
     /**
      * Returns the string representation of the event task.
      * @return

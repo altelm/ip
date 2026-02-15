@@ -7,6 +7,7 @@ public class Parser {
 
     /**
      * Parses a single user input to extract the command to be executed
+     *
      * @param input user input
      * @return
      * @throws ParserException
@@ -57,6 +58,18 @@ public class Parser {
                     infoAndDate[1].trim(), infoAndDate[2].trim());
         } else if (parts[0].equalsIgnoreCase("find")) {
             return new Command(Command.CommandType.FIND, info);
+        } else if (parts[0].equalsIgnoreCase("sort")) {
+            if (info.isEmpty()) {
+                throw new ParserException("Thous thought is incomplete,thou must provide more thought");
+            }
+
+            if (info.equalsIgnoreCase("a")) {
+                return new Command(Command.CommandType.SORT, info);
+            } else if (info.equalsIgnoreCase("d")) {
+                return new Command(Command.CommandType.SORT, info);
+            } else {
+                throw new ParserException("Thoust provided invalid sorting mechanism");
+            }
         } else if (parts[0].equalsIgnoreCase("help")) {
             return new Command(Command.CommandType.HELP);
         } else {
@@ -67,6 +80,7 @@ public class Parser {
     /**
      * Parses a user input to extract the index of the element for the command to be executed on.
      * Returns the extracted index.
+     *
      * @param input single line of user input
      * @return
      * @throws ParserException
@@ -86,7 +100,6 @@ public class Parser {
             throw new ParserException("Thou provided an invalid command");
         }
     }
-
 
     /**
      * Returns the task saved in a single lined in a loaded file

@@ -91,6 +91,10 @@ public class Esm {
             case HELP: {
                 return ui.helpReponse();
             }
+            case SORT: {
+                TaskList tempList = this.taskList.sortList(command.getInfo());
+                return ui.listResponse(tempList);
+            }
             default:
                 return ui.unkownResponse();
             }

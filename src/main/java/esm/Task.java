@@ -55,6 +55,10 @@ public class Task {
         return this.type;
     }
 
+    public String getSortDate() {
+        return null;
+    }
+
     /**
      * Returns the string representation of the task.
      * @return

@@ -1,6 +1,7 @@
 package esm;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 /**
  * Represents a list of tasks.
@@ -121,5 +122,24 @@ public class TaskList {
             toPrint += (i + ". " + this.taskList.get(i - 1)) + "\n";
         }
         return toPrint;
+    }
+
+    /**
+     * Sorts the list based on the order specified by the user
+     *
+     * @param type
+     * @return
+     */
+    public TaskList sortList(String type) {
+        assert type.equalsIgnoreCase("a") || type.equalsIgnoreCase("d")
+                : ("Unexpected sorting type");
+        ArrayList<Task> sortedList = new ArrayList<>(this.taskList);
+        if (type.equalsIgnoreCase("a")) {
+            sortedList.sort(Comparator.comparing(t -> t.getName(), String.CASE_INSENSITIVE_ORDER));
+        } else if (type.equals("d")) {
+            sortedList.sort(Comparator.comparing(t -> t.getSortDate(),
+                    Comparator.nullsLast(Comparator.naturalOrder())));
+        }
+        return new TaskList(sortedList);
     }
 }
