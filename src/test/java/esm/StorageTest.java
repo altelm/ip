@@ -10,7 +10,9 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
-
+/**
+ * Unit tests for the Storage class.
+ */
 public class StorageTest {
 
     @TempDir

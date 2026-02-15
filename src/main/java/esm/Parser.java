@@ -19,61 +19,103 @@ public class Parser {
 
         String[] parts = input.trim().split("\\s+", 2);
         String info = (parts.length == 2) ? parts[1].trim() : "";
+        String command = parts[0].toLowerCase();
 
-        if (parts[0].equalsIgnoreCase("list")) {
+        switch (command) {
+        case "list":
             return new Command(Command.CommandType.LIST);
-        } else if (parts[0].equalsIgnoreCase("bye")) {
+        case "bye":
             return new Command(Command.CommandType.BYE);
-        } else if (parts[0].equalsIgnoreCase("delete")) {
+        case "delete":
             return new Command(Command.CommandType.DELETE, parseIndex(info));
-        } else if (parts[0].equalsIgnoreCase("mark")) {
+        case "mark":
             return new Command(Command.CommandType.MARK, parseIndex(info));
-        } else if (parts[0].equalsIgnoreCase("unmark")) {
+        case "unmark":
             return new Command(Command.CommandType.UNMARK, parseIndex(info));
-        } else if (parts[0].equalsIgnoreCase("todo")) {
-            if (info.isEmpty()) {
-                throw new ParserException("Thous thought is incomplete,thou must provide more thought");
-            }
-            return new Command(Command.CommandType.TODO, info);
-        } else if (parts[0].equalsIgnoreCase("deadline")) {
-            if (info.isEmpty()) {
-                throw new ParserException("Thous thought is incomplete,thou must provide more thought");
-            }
-            assert parts[1] != null : "Unexpected null Input";
-            String[] nameAndDeadline = parts[1].split("/by");
-            if (nameAndDeadline.length != 2) {
-                throw new ParserException("Thoust should try to repeat what you want correctly, see <help>");
-            }
-            return new Command(Command.CommandType.DEADLINE, nameAndDeadline[0].trim(), nameAndDeadline[1].trim());
-        } else if (parts[0].equalsIgnoreCase("event")) {
-            if (info.isEmpty()) {
-                throw new ParserException("Thous thought is incomplete,thou must provide more thought");
-            }
-            assert parts[1] != null : "Unexpected null Input";
-            String[] infoAndDate = parts[1].split("/");
-            if (infoAndDate.length != 3) {
-                throw new ParserException("Thoust should try to repeat what you want correctly, see <help>");
-            }
-            return new Command(Command.CommandType.EVENT, infoAndDate[0].trim(),
-                    infoAndDate[1].trim(), infoAndDate[2].trim());
-        } else if (parts[0].equalsIgnoreCase("find")) {
+        case "todo":
+            return parseTodo(info);
+        case "deadline":
+            return parseDeadline(parts[1], info);
+        case "event":
+            return parseEvent(parts[1], info);
+        case "find":
             return new Command(Command.CommandType.FIND, info);
-        } else if (parts[0].equalsIgnoreCase("sort")) {
-            if (info.isEmpty()) {
-                throw new ParserException("Thous thought is incomplete,thou must provide more thought");
-            }
-
-            if (info.equalsIgnoreCase("a")) {
-                return new Command(Command.CommandType.SORT, info);
-            } else if (info.equalsIgnoreCase("d")) {
-                return new Command(Command.CommandType.SORT, info);
-            } else {
-                throw new ParserException("Thoust provided an invalid sorting mechanism");
-            }
-        } else if (parts[0].equalsIgnoreCase("help")) {
+        case "sort":
+            return parseSort(info);
+        case "help":
             return new Command(Command.CommandType.HELP);
-        } else {
+        default:
             return new Command(Command.CommandType.GIBBERSIH);
+        }
+    }
+
+    /**
+     * Parses a user input to extract the description of a todo task.
+     *
+     * @param input
+     * @return
+     * @throws ParserException
+     */
+    public static Command parseTodo(String input) throws ParserException {
+        if (input.trim().isEmpty()) {
+            throw new ParserException("Thous thought is incomplete,thou must provide more thought");
+        }
+        return new Command(Command.CommandType.TODO, input);
+    }
+
+    /**
+     * Parses a user input to extract the description and deadline of a deadline task.
+     *
+     * @param input
+     * @return
+     * @throws ParserException
+     */
+    public static Command parseDeadline(String input, String info) throws ParserException {
+        if (info.isEmpty()) {
+            throw new ParserException("Thous thought is incomplete,thou must provide more thought");
+        }
+        assert input != null : "Unexpected null Input";
+        String[] nameAndDeadline = input.split("/by");
+        if (nameAndDeadline.length != 2) {
+            throw new ParserException("Thoust should try to repeat what you want correctly, see <help>");
+        }
+        return new Command(Command.CommandType.DEADLINE, nameAndDeadline[0].trim(), nameAndDeadline[1].trim());
+    }
+
+    /**
+     * Parses a user input to extract the description, start date and end date of an event task.
+     *
+     * @param input
+     * @return
+     * @throws ParserException
+     */
+    public static Command parseEvent(String input, String info) throws ParserException {
+        if (info.isEmpty()) {
+            throw new ParserException("Thous thought is incomplete,thou must provide more thought");
+        }
+        assert input != null : "Unexpected null Input";
+        String[] infoAndDate = input.split("/");
+        if (infoAndDate.length != 3) {
+            throw new ParserException("Thoust should try to repeat what you want correctly, see <help>");
+        }
+        return new Command(Command.CommandType.EVENT, infoAndDate[0].trim(),
+                infoAndDate[1].trim(), infoAndDate[2].trim());
+    }
+
+    /**
+     * Parses a user input to extract the description of a task for the sort command.
+     */
+    public static Command parseSort(String info) throws ParserException {
+        if (info.isEmpty()) {
+            throw new ParserException("Thous thought is incomplete,thou must provide more thought");
+        }
+
+        if (info.equalsIgnoreCase("a")) {
+            return new Command(Command.CommandType.SORT, info);
+        } else if (info.equalsIgnoreCase("d")) {
+            return new Command(Command.CommandType.SORT, info);
+        } else {
+            throw new ParserException("Thoust provided an invalid sorting mechanism");
         }
     }
 
