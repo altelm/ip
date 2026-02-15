@@ -25,7 +25,7 @@ Features:
 - [ ] Reminders (coming soon)
 
 Here is the Launcher class!
-```
+```java
 public class Launcher {
     public static void main(String[] args) {
         Application.launch(Main.class, args);
