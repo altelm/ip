@@ -68,7 +68,7 @@ public class Parser {
             } else if (info.equalsIgnoreCase("d")) {
                 return new Command(Command.CommandType.SORT, info);
             } else {
-                throw new ParserException("Thoust provided invalid sorting mechanism");
+                throw new ParserException("Thoust provided an invalid sorting mechanism");
             }
         } else if (parts[0].equalsIgnoreCase("help")) {
             return new Command(Command.CommandType.HELP);
