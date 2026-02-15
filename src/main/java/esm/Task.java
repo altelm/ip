@@ -2,69 +2,61 @@ package esm;
 
 /**
  * Represents a task to accomplish. A task is represented by the type of task, the name,
- * and weither it is done or not.
+ * and whether it is done or not.
  */
 public class Task {
 
-    /**
-     * If task is done is represented as string.
-     */
     private String name;
-    private String isDone;
+    private boolean isDone;
     private String type;
 
     /**
-     * Creates a task with a specified name and type. Upon creation a task is considered as not done.
-     * @param type type of task
-     * @param name name of task
+     * Creates a task with a specified name and type.
+     * Upon creation a task is considered not done.
+     *
+     * @param type the type of task
+     * @param name the name of task
      */
     public Task(String type, String name) {
         this.name = name;
-        this.isDone = "";
+        this.isDone = false;
         this.type = type;
     }
 
-    /**
-     * Marks the task as done.
-     * @param done
-     */
-    public void setDone(String done) {
-        this.isDone = done;
-    }
 
-    /**
-     * Returns the name of the task.
-     * @return
-     */
     public String getName() {
         return this.name;
     }
 
-    /**
-     * Returns weither the task is done or not
-     */
     public String getDone() {
-        return this.isDone;
+        return this.isDone ? "X" : "";
     }
 
-    /**
-     * Returns the type of the task.
-     * @return
-     */
+
+    public void setDone(boolean done) {
+        this.isDone = done;
+    }
+
     public String getType() {
         return this.type;
     }
 
+    /**
+     * Returns the sort date of the task, if applicable.
+     *
+     * @return the sort date, or {@code null} if not applicable
+     */
     public String getSortDate() {
         return null;
     }
 
     /**
-     * Returns the string representation of the task.
-     * @return
+     * Returns a string representation of the task in the format: [type][isDone] name
+     *
+     * @return the string representation of the task
      */
     @Override
     public String toString() {
-        return "[" + this.type + "][" + this.isDone + "] " + this.name;
+        return "[" + this.type + "][" + this.getDone() + "] " + this.name;
     }
 }

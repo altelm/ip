@@ -28,7 +28,7 @@ public class TaskList {
         if (i < 0 || i > getSize()) {
             return;
         }
-        this.taskList.get(i - 1).setDone("X");
+        this.taskList.get(i - 1).setDone(true);
     }
 
     /**
@@ -40,7 +40,7 @@ public class TaskList {
         if (i < 0 || i > getSize()) {
             return;
         }
-        this.taskList.get(i - 1).setDone("");
+        this.taskList.get(i - 1).setDone(false);
     }
 
     /**
@@ -97,7 +97,9 @@ public class TaskList {
     }
 
     /**
-     * Finds all the tasks with the same info and returns them
+     * Finds all the tasks with the same info and returns them.
+     * @param info info to be searched for in the task list.
+      * @return
      */
     public TaskList findTask(String info) {
         ArrayList<Task> tasks = new ArrayList<>();
@@ -110,7 +112,8 @@ public class TaskList {
     }
 
     /**
-     * Prints the list of tasks in order, or informs the user if the list is empty.
+     * Returns the string format taskList in order, or informs the user if the list is empty.
+     * @return
      */
     public String printList() {
         if (getSize() == 0) {
@@ -125,9 +128,9 @@ public class TaskList {
     }
 
     /**
-     * Sorts the list based on the order specified by the user
+     * Sorts the list based on the order specified by the user.
      *
-     * @param type
+     * @param type order to sort the list in, either "a" for alphabetical or "d" for date.
      * @return
      */
     public TaskList sortList(String type) {

@@ -6,7 +6,7 @@ package esm;
 public class Parser {
 
     /**
-     * Parses a single user input to extract the command to be executed
+     * Parses a single user input to extract the command to be executed.
      *
      * @param input user input
      * @return
@@ -102,9 +102,9 @@ public class Parser {
     }
 
     /**
-     * Returns the task saved in a single lined in a loaded file
+     * Returns the task saved in a single lined in a loaded file.
      *
-     * @param line line we want to extract the task from
+     * @param line line we want to extract the task from.
      * @return
      */
     public static Task getSavedTask(String line) throws DateException {
@@ -114,17 +114,15 @@ public class Parser {
         if (parsed[0].equals("T")) {
             task = new ToDo(parsed[2]);
         } else if (parsed[0].equals("D")) {
-            String[] nameAndDeadline = parsed[2].trim().split("/by");
-            task = new Deadline(nameAndDeadline[0].trim(), nameAndDeadline[1].trim());
+            task = new Deadline(parsed[2].trim(), parsed[3].trim());
         } else if (parsed[0].equals("E")) {
-            String[] infoAndDate = parsed[2].trim().split("/");
-            task = new Event(infoAndDate[0], infoAndDate[1], infoAndDate[2]);
+            task = new Event(parsed[2].trim(), parsed[3].trim(), parsed[4].trim());
         } else {
             return null;
         }
 
-        if (parsed[1].equals("1")) {
-            task.setDone("1");
+        if (parsed[1].equals("X")) {
+            task.setDone(true);
         }
 
         return task;

@@ -39,6 +39,11 @@ public class MainWindow extends AnchorPane {
         esm = e;
         dialogContainer.getChildren().add(
                 DialogBox.getEsmDialog("Greetings I am thy humble Esm\nSpeak and I shall head the!\n", esmImage));
+        String startupMessage = esm.getStartupMessage();
+        if (startupMessage != null) {
+            dialogContainer.getChildren().add(
+                    DialogBox.getEsmDialog(startupMessage + "\n", esmImage));
+        }
     }
 
     /**

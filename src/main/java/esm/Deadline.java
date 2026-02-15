@@ -15,9 +15,9 @@ public class Deadline extends Task {
     private DateTimeFormatter formattedDate = DateTimeFormatter.ofPattern("MMM dd yyyy");
 
     /**
-     * Creates a Deadline task from the given array of nameAndDeadline
-     * @param name name of task to be done
-     * @param deadline date deadline of task
+     * Creates a Deadline task from the given array of nameAndDeadline.
+     * @param name name of task to be done.
+     * @param deadline date deadline of task.
      */
     public Deadline(String name, String deadline) throws DateException {
         super("D", name);
@@ -29,14 +29,15 @@ public class Deadline extends Task {
 
     }
 
+    public String getDeadline() {
+        return this.deadline.toString();
+    }
+
     @Override
     public String getSortDate() {
         return this.deadline.toString();
     }
-    /**
-     * Returns the String representation of this deadline task
-     * @return
-     */
+
     @Override
     public String toString() {
         return super.toString() + "(by: " + this.deadline.format(formattedDate) + ")";

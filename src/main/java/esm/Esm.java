@@ -13,6 +13,7 @@ public class Esm {
     private Storage storage;
     private TaskList taskList;
     private Ui ui;
+    private String startupMessage;
 
     /**
      * Creates a Esm object
@@ -20,11 +21,15 @@ public class Esm {
     public Esm() {
         this.path = Paths.get("data", "esm.txt");
         this.storage = new Storage(path);
-        ArrayList<Task> tempList = storage.loadFile();
-        assert tempList != null : "Check your file, file should not be null";
-        this.taskList = new TaskList(tempList);
         this.ui = new Ui();
-
+        try {
+            ArrayList<Task> tempList = storage.loadFile();
+            this.taskList = new TaskList(tempList);
+            this.startupMessage = null;
+        } catch (StorageException e) {
+            this.taskList = new TaskList(new ArrayList<>());
+            this.startupMessage = e.getMessage();
+        }
     }
 
     /**
@@ -46,11 +51,11 @@ public class Esm {
             case LIST:
                 return ui.listResponse(this.taskList);
             case MARK: {
-                taskList.markTask(command.getIndex());
+                this.taskList.markTask(command.getIndex());
                 return ui.markResponse(command.getIndex(), this.taskList);
             }
             case UNMARK: {
-                taskList.unmarkTask(command.getIndex());
+                this.taskList.unmarkTask(command.getIndex());
                 return ui.unmarkResponse(command.getIndex(), this.taskList);
             }
             case DELETE: {
@@ -101,5 +106,13 @@ public class Esm {
         } catch (EsmException e) {
             return e.getMessage();
         }
+    }
+
+    /**
+     * Returns the startup message if the loading the file failed, otherwise returns null.
+     * @return Startup error message, or {@code null} if startup succeeded.
+     */
+    public String getStartupMessage() {
+        return this.startupMessage;
     }
 }
