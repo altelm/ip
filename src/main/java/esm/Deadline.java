@@ -3,6 +3,9 @@ package esm;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+
+import javafx.util.converter.LocalDateStringConverter;
+
 /**
  * Represents a task with a deadline.
  */
@@ -26,6 +29,10 @@ public class Deadline extends Task {
 
     }
 
+    @Override
+    public String getSortDate() {
+        return this.deadline.toString();
+    }
     /**
      * Returns the String representation of this deadline task
      * @return

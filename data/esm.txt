@@ -1,3 +1,5 @@
 T |  | read
 T |  | write a book
 T |  | cook
+D |  | do assignment
+E |  | festival

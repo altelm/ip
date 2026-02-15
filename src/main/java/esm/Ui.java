@@ -120,7 +120,8 @@ public class Ui {
                 + "To unmark a task that was done - unmark <index of task>\n"
                 + "To delete a task - delete <index of task>\n"
                 + "To see a list of all tasks - list\n"
-                + "To find a task - find <name/info of task>\n";
+                + "To find a task - find <name/info of task>\n"
+                + "To get a sorted list - sort <a> /ascending alphabetical order) or/ d /for ascending deadline/>\n";
     }
 
     /**
