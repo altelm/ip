@@ -21,10 +21,14 @@ Features:
 - [X] Managing Tasks
 - [X] Manage Events
 - [X] Find Tasks
+- [X] Sort tasks alphabetically or by nearing deadline
 - [ ] Reminders (coming soon)
 
-Some basic commands are
+Here is the Launcher class!
 ```
-todo <task>
-deadline <task /by yyyy-mm-dd>
+public class Launcher {
+    public static void main(String[] args) {
+        Application.launch(Main.class, args);
+    }
+}
 ```
