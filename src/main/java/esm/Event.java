@@ -27,15 +27,19 @@ public class Event extends Task {
         }
     }
 
+    public String getStartDate() {
+        return this.startDate.toString();
+    }
+
+    public String getEndDate() {
+        return this.endDate.toString();
+    }
+
     @Override
     public String getSortDate() {
         return this.endDate.toString();
     }
 
-    /**
-     * Returns the string representation of the event task.
-     * @return
-     */
     @Override
     public String toString() {
         return super.toString() + "(from: " + this.startDate.format(formattedDate) + " to: "

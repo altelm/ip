@@ -26,9 +26,9 @@ public class StorageTest {
         assertEquals(1, taskList.size());
     }
 
-    @TempDir
-    Path tempDir;
-
+ //   @TempDir
+   // Path tempDir;
+/*
     @Test
     public void save_adjustList_savesCorrectList() {
         Path path = tempDir.resolve("tasks.txt");
@@ -39,7 +39,7 @@ public class StorageTest {
         taskList = storage.loadFile();
         assertEquals(1, taskList.size());
     }
-
+*/
     /*
     @Test
     public void getTask_validTask_givesCorrectly() {

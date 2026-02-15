@@ -1,5 +1,6 @@
 T |  | read
-T |  | write a book
+T | X | write a book
 T |  | cook
-D |  | do assignment
-E |  | festival
+D | X | write a book | 2026-02-03
+D |  | do assignment | 2026-03-04
+E |  | festival | 2026-03-04 | 2026-03-05

@@ -1,12 +1,12 @@
 package esm;
 
 /**
- * Handles the responses to be output for each command
+ * Handles the responses to be output for each command.
  */
 public class Ui {
 
     /**
-     * Returns the response incase and empty input is provided
+     * Returns the response incase and empty input is provided.
      *
      * @return
      */
@@ -15,10 +15,10 @@ public class Ui {
     }
 
     /**
-     * Returns the response in the case of the unmark command, output depends on the validity of the index
+     * Returns the response in the case of the unmark command, output depends on the validity of the index.
      *
-     * @param index
-     * @param taskList
+     * @param index the index of the task to be marked.
+     * @param taskList the task list to be marked on.
      * @return
      */
     public String unmarkResponse(int index, TaskList taskList) {
@@ -31,10 +31,10 @@ public class Ui {
     }
 
     /**
-     * Returns the response in the case of mark command, output depends on the validity of the index
+     * Returns the response in the case of mark command, output depends on the validity of the index.
      *
-     * @param index
-     * @param taskList
+     * @param index the index of the task to be marked.
+     * @param taskList the task list to be marked on.
      * @return
      */
     public String markResponse(int index, TaskList taskList) {
@@ -47,46 +47,47 @@ public class Ui {
     }
 
     /**
-     * Returns the string format of the list to be printed in the case of a list command
+     * Returns the string format of the list to be printed in the case of a list command.
      *
      * @param taskList
-     * @return
+     * @return string format of the list of tasks in the task list.
      */
     public String listResponse(TaskList taskList) {
         return taskList.printList();
     }
 
     /**
-     * Returns the response in case of the delete command
+     * Returns the response in case of the delete command.
      *
      * @param taskList
-     * @param tempTask
+     * @param task the task that is being deleted, used to print the task that is being deleted in the response.
+     * @param index    the index of the task being deleted, used to check the validity
      * @return
      */
-    public String deleteResponse(TaskList taskList, Task tempTask, int index) {
+    public String deleteResponse(TaskList taskList, Task task, int index) {
         if (index == -1) {
             return "Thy ledger is empty";
         } else if (index == -2) {
             return "Thou hath given an non-existeth ledger number";
         }
-        return ("Thy request is heeded the task is expunged.\n" + tempTask
+        return ("Thy request is heeded the task is expunged.\n" + task
                 + "\nThy ledger now holdeth " + taskList.getSize() + " task(s)");
     }
 
     /**
-     * returns the response incase of task command: todo, deadline, and event
+     * Returns the response incase of task command: todo, deadline, and event.
      *
      * @param taskList
-     * @param tempTask
+     * @param task
      * @return
      */
-    public String taskResponse(TaskList taskList, Task tempTask) {
-        return ("Aye tis done.\n" + tempTask + "\nThy ledger now holdeth "
+    public String taskResponse(TaskList taskList, Task task) {
+        return ("Aye tis done.\n" + task + "\nThy ledger now holdeth "
                 + taskList.getSize() + " task(s)");
     }
 
     /**
-     * Returns the string format of a list containing the tasks found by the find() method in TaskList class
+     * Returns the string format of a list containing the tasks found by the find() method in TaskList class.
      *
      * @param tasks
      * @return
@@ -99,7 +100,7 @@ public class Ui {
     }
 
     /**
-     * Returns the response in the case of a gibberish input
+     * Returns the response in the case of a gibberish input.
      *
      * @return
      */
@@ -108,7 +109,7 @@ public class Ui {
     }
 
     /**
-     * Returns the response when the user asks for help
+     * Returns the response when the user asks for help.
      *
      * @return
      */
@@ -125,7 +126,7 @@ public class Ui {
     }
 
     /**
-     * Returns the response to bye
+     * Returns the response to bye.
      *
      * @return
      */
@@ -134,7 +135,7 @@ public class Ui {
     }
 
     /**
-     * Returns a response when all CommandTypes are inapplicable
+     * Returns a response when all CommandTypes are inapplicable.
      *
      * @return
      */
