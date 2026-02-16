@@ -7,7 +7,7 @@ Just ask it to `todo`!
 
 It's:
 - text-based
-- easy to learn
+- ~~tricky~~ easy to use
 - ***Very*** fast
 - Structured
 
